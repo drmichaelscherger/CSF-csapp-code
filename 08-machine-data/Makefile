@@ -21,7 +21,7 @@ CINC =
 	objdump -d $* > $*.64d
 	rm -f $*
 
-files:	zip.64s array.64s structure.64s struct_eg.64s float.64s
+files:	zip.64s array.64s structure.64s struct_eg.64s float.64s decls.64s
 
 zip: zip.c
 	$(CC) $(CFLAGS) $(CINC) zip.c -o zip
@@ -29,8 +29,11 @@ zip: zip.c
 float: float.c
 	$(CC) $(CFLAGS) $(CINC) float.c -o float
 
+decls: decls.c
+	$(CC) $(CFLAGS) $(CING) decls.c -o decls
+
 clean:
 	rm -f *~
 	rm -f *.64s *.64o *.64d *.O1-64s
-	rm -f zip float
+	rm -f zip float decls
 
