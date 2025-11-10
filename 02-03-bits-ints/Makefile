@@ -1,10 +1,29 @@
-CFLAGS = -Og
-CC = gcc
+.SUFFIXES: .c .o
+CC=gcc
+CFLAGS = -Og -I.
+OBJS = csapp.o
 
-all: show-bytes64
+PROGS = show-bytes
 
-show-bytes64: show-bytes.c
-	$(CC) $(CFLAGS) -m64 show-bytes.c -o show-bytes64
+all: $(PROGS)
+
+$(PROGS): %: %.o ../csapp.o
+	$(CC) $(CFLAGS) -o $@ $@.o ../csapp.o
+
+
+../csapp.o:
+	$(MAKE) -C .. $(notdir $@)
+
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+
+csapp:
+	$(MAKE) -C ..
+
 
 clean:
-	rm -f *~ *.o show-bytes64
+	rm -rf $(PROGS) *~
+
+

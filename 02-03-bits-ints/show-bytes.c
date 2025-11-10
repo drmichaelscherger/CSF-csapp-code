@@ -36,11 +36,11 @@ void test_show_bytes(int val) {
     float fval = (float) ival;
     int *pval = &ival;
     printf("Stack variable ival = %d\n", ival);
-    printf("(int)ival:\n");
+    printf("(int)ival: %d\n", ival);
     show_int(ival);
-    printf("(float)ival:\n", ival);
+    printf("(float)ival: %f\n", (float)ival);
     show_float(fval);
-    printf("&ival:\n", ival);
+    printf("&ival: %p %p\n", pval);
     show_pointer(pval);
 }
 /* $end test-show-bytes */

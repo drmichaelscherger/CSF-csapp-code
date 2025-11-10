@@ -1,16 +1,16 @@
 CC = gcc
 
-CFLAGS = -Og -Wall 
+CFLAGS = -Og -Wall -I..
 LDLIBS = -lpthread -lm
 
 all: psum-mutex psum-array psum-local
 
-psum-mutex: psum-mutex.c csapp.o
-psum-array: psum-array.c csapp.o
-psum-local: psum-local.c csapp.o
+psum-mutex: psum-mutex.c ../csapp.o
+psum-array: psum-array.c ../csapp.o
+psum-local: psum-local.c ../csapp.o
 
-csapp.o: csapp.c csapp.h
-	$(CC) $(CFLAGS) -c csapp.c
+#csapp.o: csapp.c csapp.h
+#	$(CC) $(CFLAGS) -c csapp.c
 
 realtimer.o: realtimer.c realtimer.h
 	$(CC) $(CFLAGS) -c realtimer.c
